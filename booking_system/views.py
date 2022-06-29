@@ -22,3 +22,17 @@ def add_booking(request):
         'form' : form
     }
     return render(request, 'booking_system/add_booking.html', context)
+
+
+def edit_booking(request, booking_id):
+    bookings = get_object_or_404(booking, id=booking_id)
+    if request.method == 'POST':
+        form = BookingForm(request.POST, instance=bookings)
+        if form.is_valid():
+            form.save()
+            return redirect('get_bookings_list')
+    form = BookingForm(instance=bookings)
+    context = {
+        'form' : form
+    }
+    return render(request, 'booking_system/edit_booking.html', context)
