@@ -20,4 +20,5 @@ from booking_system import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.get_bookings_list, name='get_bookings_list'),
+    path('add', views.add_booking, name='add'),
 ]
