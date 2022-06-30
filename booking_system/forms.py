@@ -1,6 +1,6 @@
 from django import forms
-from .models import booking
 from django.forms.widgets import DateTimeInput
+from .models import booking
 
 
 class BookingForm(forms.ModelForm):

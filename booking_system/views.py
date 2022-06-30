@@ -19,7 +19,7 @@ def add_booking(request):
             return redirect('get_bookings_list')
     form = BookingForm()
     context = {
-        'form' : form
+        'form': form
     }
     return render(request, 'booking_system/add_booking.html', context)
 
@@ -36,3 +36,9 @@ def edit_booking(request, booking_id):
         'form' : form
     }
     return render(request, 'booking_system/edit_booking.html', context)
+
+
+def delete_booking(request, booking_id):
+    bookings = get_object_or_404(booking, id=booking_id)
+    bookings.delete()
+    return redirect('get_bookings_list')
